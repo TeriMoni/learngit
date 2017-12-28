@@ -1,0 +1,58 @@
+  springboot  微服务框架---分布式
+
+  为什么要有SpringBoot？
+  简化xml配置，提高开发效率。
+  配置或者是YML文件
+
+  SpringBoot 的作用
+
+  简化xml（除外mybatis）
+  独立的应用程序（Jar/war(jsp)）
+  单独war工程-不需要集成tomcat插件运行。（内嵌入一个tomcat）
+
+1. 创建独立的 Spring 应用程序
+
+2. 嵌入的 Tomcat，无需部署 WAR 文件
+
+3. 简化 Maven 配置
+
+4. 自动配置 Spring
+
+5. 提供生产就绪型功能，如指标，健康检查和外部配置
+
+6.开箱即用，没有代码生成，也无需 XML 配置。
+
+
+springboot 提供了 http refult风格 
+@RestController ==Controller每个方法加上	@ResponseBody
+
+@ResponseBody 返回 所有请求方法返回json格式。
+
+
+ 大家自己在搭建环境的时候  写请求里面可能会发生以下异常。。
+
+什么是模板引擎？
+动态页面静态---
+什么是动态页面静态化？
+---搜索引擎，SEO -（伪静态）html
+
+jsp 通过servlet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
