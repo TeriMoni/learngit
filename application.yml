@@ -23,8 +23,6 @@ spring:
   cache:
     ehcache:
       config: classpath:ehcache.xml
-  application:
-    name: api-service
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.liu.model
