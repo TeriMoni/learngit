@@ -1,10 +1,8 @@
-info:
-  profile: default
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/jml?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;noAccessToProcedureBodies=true
     username: root
-    password: 11111
+    password: R0boo@Sip$
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
@@ -36,3 +34,12 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 2222
+eureka:
+  client:
+    serviceUrl.defaultZone: http://localhost:1001/eureka/
+
+
