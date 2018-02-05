@@ -443,6 +443,8 @@ SOLR_HOME="/opt/solrhome"
 solr.in.sh文件可以配置虚拟机参数，jetty启动的日志文件位置存放路径，根据需求配置
 
 
+==zookeper 管理solr集群原理 :zookeper 的数据会统一放在特定文件夹,任意节点数据刷新会同步到别的节点,solr的配置文件可配置solr_home文件夹，在web.xml 中配置读取solr配置文件，将solr_home文件夹定义问zookeper的数据存放文件夹，当在任意solr集群中创建文档，配置文件会通过zookeper同步到其他节点，solr集群会同步到配置文件，自动创建相应的分片和副本。==
+
 ## 4 redis 搭建
 
 1.安装gcc 环境  否则解压后无法进行编译
