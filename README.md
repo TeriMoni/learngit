@@ -8,3 +8,6 @@ git 学习demo,记录平时的学习笔记。
 
 
 [CentOS6.5安装ElasticSearch6.2.3(转载)](https://www.cnblogs.com/hunttown/archive/2018/03/26/8652904.html)
+
+
+[Elasticsearch5.2.1集群搭建，动态加入节点，并添加监控诊断插件(转载)](https://blog.csdn.net/gamer_gyt/article/details/59077189)
