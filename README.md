@@ -11,3 +11,6 @@ git 学习demo,记录平时的学习笔记。
 
 
 [Elasticsearch5.2.1集群搭建，动态加入节点，并添加监控诊断插件(转载)](https://blog.csdn.net/gamer_gyt/article/details/59077189)
+
+[jvm学习笔记](https://github.com/TeriMoni/learngit/blob/master/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+
