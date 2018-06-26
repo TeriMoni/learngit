@@ -14,3 +14,5 @@ git 学习demo,记录平时的学习笔记。
 
 [jvm学习笔记](https://github.com/TeriMoni/learngit/blob/master/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 
+[elasticsearch基础知识介绍](https://github.com/TeriMoni/learngit/blob/master/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/Elasticsearch%20%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md)
+
