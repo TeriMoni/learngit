@@ -7,7 +7,7 @@ git 学习demo,记录平时的学习笔记。
 [freemarker导出word使用方法](https://github.com/TeriMoni/learngit/blob/master/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/freemarker%E5%AF%BC%E5%87%BAWORD%E4%BD%BF%E7%94%A8.pdf)
 
 
-[CentOS6.5安装ElasticSearch6.2.3(转载)](https://www.cnblogs.com/hunttown/archive/2018/03/26/8652904.html)
+[CentOS6.5安装ElasticSearch6.2.3(转载)](https://www.cnblogs.com/hunttown/archive//8652904.html)
 
 
 [Elasticsearch5.2.1集群搭建，动态加入节点，并添加监控诊断插件(转载)](https://blog.csdn.net/gamer_gyt/article/details/59077189)

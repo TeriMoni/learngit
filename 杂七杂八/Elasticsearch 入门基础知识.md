@@ -69,18 +69,18 @@ solr优点：
     
 ```
 public ElasticUtil(String clusterName,String ip,int port) {
-		try {
-			Settings settings = Settings.builder()
-					.put("cluster.name", clusterName) //设置ES实例的名称
-					.put("client.transport.sniff", true) //自动嗅探整个集群的状态，把集群中其他ES节点的ip添加到本地的客户端列表中
-					.build(); 
-			client = new PreBuiltTransportClient(settings);//初始化client
-			client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(ip), port)); //添加一个集群节点，自动添加
-		} catch (Exception e) {
-			 logger.error("connect elastic cluster faild",e);
-		}
-		 logger.info(">>> ElasticUtil init successfully");
-	}
+try {
+Settings settings = Settings.builder()
+.put("cluster.name", clusterName) //设置ES实例的名称
+.put("client.transport.sniff", true) //自动嗅探整个集群的状态，把集群中其他ES节点的ip添加到本地的客户端列表中
+.build(); 
+client = new PreBuiltTransportClient(settings);//初始化client
+client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(ip), port)); //添加一个集群节点，自动添加
+} catch (Exception e) {
+ logger.error("connect elastic cluster faild",e);
+}
+ logger.info(">>> ElasticUtil init successfully");
+}
 ```
 
 2. es插入文档，支持java bean ，map，json字符串
@@ -88,17 +88,17 @@ public ElasticUtil(String clusterName,String ip,int port) {
     
 ```
 private IndexResponse insertDocument(String index, String type,
-			String id, Object data) {
-		IndexResponse response = null;
-		try {
-			// generate json
-			byte[] json = mapper.writeValueAsBytes(data); //序列化一个对象
-			response = (id == null) ? client.prepareIndex(index,type).setSource(json).get() : client.prepareIndex(index,type,id).setSource(json).get();
-		} catch (Exception e) {
-			logger.error("insert data error",e);
-		}
-		return response; 
-	}
+String id, Object data) {
+IndexResponse response = null;
+try {
+// generate json
+byte[] json = mapper.writeValueAsBytes(data); //序列化一个对象
+response = (id == null) ? client.prepareIndex(index,type).setSource(json).get() : client.prepareIndex(index,type,id).setSource(json).get();
+} catch (Exception e) {
+logger.error("insert data error",e);
+}
+return response; 
+}
 ```
 
 3. es 通过id查询文档
@@ -106,77 +106,77 @@ private IndexResponse insertDocument(String index, String type,
 
 ```
 public String getDocumentById(String index ,String type,String id){
-		GetResponse response = client.prepareGet(index, type, id)
-				.setOperationThreaded(false)    // 线程安全
-				.get();
-		return response.getSourceAsString();
-	}
+GetResponse response = client.prepareGet(index, type, id)
+.setOperationThreaded(false)    // 线程安全
+.get();
+return response.getSourceAsString();
+}
 ```
 4. es 通过组合条删除文档
     
     
 ```
 public long deleteDocumentByCondition(String index,MatchQueryBuilder builder){
-		BulkByScrollResponse response =
-				DeleteByQueryAction.INSTANCE.newRequestBuilder(client)
-				.filter(builder) //查询条件
-				.source(index) //index(索引名)
-				.get(); //执行
-		long deleted = response.getDeleted(); //删除文档的数量
-		return deleted;
-	}
+BulkByScrollResponse response =
+DeleteByQueryAction.INSTANCE.newRequestBuilder(client)
+.filter(builder) //查询条件
+.source(index) //index(索引名)
+.get(); //执行
+long deleted = response.getDeleted(); //删除文档的数量
+return deleted;
+}
 ```
 5. es通过组合条件查询文档
 
 
 ```
 public void searchMutil()throws Exception{  
-	    SearchRequestBuilder srb=client.prepareSearch("app").setTypes("province");  
-	    QueryBuilder queryBuilder=QueryBuilders.matchPhraseQuery("name", "知乎");  
-	    QueryBuilder queryBuilder2=QueryBuilders.matchPhraseQuery("adStatus", "Y");  
-	    SearchResponse sr=srb.setQuery(QueryBuilders.boolQuery()  
-	            .must(queryBuilder)  
-	            .must(queryBuilder2))  
-	        .execute()  
-	        .actionGet();   
-	    SearchHits hits=sr.getHits();  
-	    for(SearchHit hit:hits){  
-	        System.out.println(hit.getSourceAsString());  
-	    }  
-	}  
+    SearchRequestBuilder srb=client.prepareSearch("app").setTypes("province");  
+    QueryBuilder queryBuilder=QueryBuilders.matchPhraseQuery("name", "知乎");  
+    QueryBuilder queryBuilder2=QueryBuilders.matchPhraseQuery("adStatus", "Y");  
+    SearchResponse sr=srb.setQuery(QueryBuilders.boolQuery()  
+    .must(queryBuilder)  
+    .must(queryBuilder2))  
+    .execute()  
+    .actionGet();   
+    SearchHits hits=sr.getHits();  
+    for(SearchHit hit:hits){  
+    System.out.println(hit.getSourceAsString());  
+    }  
+}  
 ```
 6. es通过id删除文档
 
 
 ```
 public int deleteDocumentById(String index ,String type,String id){
-		try {
-			DeleteResponse response = client.prepareDelete(index, type ,id)
-					.get();
-		} catch (Exception e) {
-			logger.error("delete data error",e);
-			return -1;
-		}
-		return 0;
-	}
+try {
+DeleteResponse response = client.prepareDelete(index, type ,id)
+.get();
+} catch (Exception e) {
+logger.error("delete data error",e);
+return -1;
+}
+return 0;
+}
 ```
 7. es批量插入文档
 
 
 ```
 public boolean bulkInsertDocument(String index ,String type,List<Map<String, Object>> data){
-		BulkRequestBuilder bulkRequest = client.prepareBulk();
-		for (Map<String, Object> map : data) {
-			bulkRequest.add(client.prepareIndex(index, type)
-					.setSource(map));
-		}
-		BulkResponse bulkResponse = bulkRequest.get();
-		if (bulkResponse.hasFailures()) {
-			logger.error("bulk insert data error{}",bulkResponse.buildFailureMessage());
-			return false;
-		}
-		return true;
-	}
+BulkRequestBuilder bulkRequest = client.prepareBulk();
+for (Map<String, Object> map : data) {
+bulkRequest.add(client.prepareIndex(index, type)
+.setSource(map));
+}
+BulkResponse bulkResponse = bulkRequest.get();
+if (bulkResponse.hasFailures()) {
+logger.error("bulk insert data error{}",bulkResponse.buildFailureMessage());
+return false;
+}
+return true;
+}
 ```
 
 更多api资料详见
